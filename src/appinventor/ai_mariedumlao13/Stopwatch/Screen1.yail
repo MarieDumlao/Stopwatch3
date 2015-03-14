@@ -1,0 +1,89 @@
+#|
+$Source $Yail
+|#
+
+(define-form appinventor.ai_mariedumlao13.Stopwatch.Screen1 Screen1)
+(require <com.google.youngandroid.runtime>)
+
+;;; Screen1
+
+(do-after-form-creation (set-and-coerce-property! 'Screen1 'AppName "Stopwatch" 'text)
+ (set-and-coerce-property! 'Screen1 'BackgroundImage "large.jpg" 'text)
+ (set-and-coerce-property! 'Screen1 'Title "Screen1" 'text)
+)
+
+;;; HorizontalArrangement1
+
+(add-component Screen1 HorizontalArrangement HorizontalArrangement1 
+)
+
+;;; START
+
+(add-component HorizontalArrangement1 Button START 
+(set-and-coerce-property! 'START 'Text "START" 'text)
+
+)
+
+(define-event START Click()(set-this-form)
+    (set-and-coerce-property! 'Clock1 'TimerEnabled #f 'boolean))
+;;; STOP
+
+(add-component HorizontalArrangement1 Button STOP 
+(set-and-coerce-property! 'STOP 'Text "PAUSE/RESET" 'text)
+
+)
+
+(define-event STOP Click()(set-this-form)
+    (set-and-coerce-property! 'Clock1 'TimerEnabled #f 'boolean))
+(define-event STOP LongClick()(set-this-form)
+    (set-and-coerce-property! 'Clock1 'TimerEnabled #f 'boolean)(set-and-coerce-property! 'Label1 'Text 0 'text))
+;;; SAVE
+
+(add-component HorizontalArrangement1 Button SAVE 
+(set-and-coerce-property! 'SAVE 'Text "SAVE" 'text)
+
+)
+
+(define-event SAVE Click()(set-this-form)
+    (call-component-method 'TinyDB1 'StoreValue (*list-for-runtime* "time1"  (get-property 'Label1 'Text)) '(text any)))
+;;; LOAD
+
+(add-component HorizontalArrangement1 Button LOAD 
+(set-and-coerce-property! 'LOAD 'Text "LOAD" 'text)
+
+)
+
+(define-event LOAD Click()(set-this-form)
+    (set-and-coerce-property! 'Label1 'Text (call-component-method 'TinyDB1 'GetValue (*list-for-runtime* "time1"  (get-property 'Label1 'Text)) '(text any)) 'text))
+;;; HorizontalArrangement2
+
+(add-component Screen1 HorizontalArrangement HorizontalArrangement2 
+)
+
+;;; HorizontalArrangement3
+
+(add-component HorizontalArrangement2 HorizontalArrangement HorizontalArrangement3 
+)
+
+;;; Label1
+
+(add-component HorizontalArrangement2 Label Label1 
+(set-and-coerce-property! 'Label1 'FontSize 50 'number)
+
+(set-and-coerce-property! 'Label1 'Text "0" 'text)
+
+)
+
+;;; Clock1
+
+(add-component Screen1 Clock Clock1 
+)
+
+(define-event Clock1 Timer()(set-this-form)
+    (set-and-coerce-property! 'Label1 'Text (call-yail-primitive + (*list-for-runtime* (get-property 'Label1 'Text) 1 ) '(number number ) "+") 'text))
+;;; TinyDB1
+
+(add-component Screen1 TinyDB TinyDB1 
+)
+
+(init-runtime)

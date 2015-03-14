@@ -1,0 +1,142 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="component_event" id="1" x="1" y="1">
+    <mutation component_type="Button" instance_name="START" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">START</field>
+    <statement name="DO">
+      <block type="component_set_get" id="2" inline="false">
+        <mutation component_type="Clock" set_or_get="set" property_name="TimerEnabled" is_generic="false" instance_name="Clock1"></mutation>
+        <field name="COMPONENT_SELECTOR">Clock1</field>
+        <field name="PROP">TimerEnabled</field>
+        <value name="VALUE">
+          <block type="logic_boolean" id="3">
+            <field name="BOOL">FALSE</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="4" x="390" y="1">
+    <mutation component_type="Button" instance_name="SAVE" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">SAVE</field>
+    <statement name="DO">
+      <block type="component_method" id="5" inline="false">
+        <mutation component_type="TinyDB" method_name="StoreValue" is_generic="false" instance_name="TinyDB1"></mutation>
+        <field name="COMPONENT_SELECTOR">TinyDB1</field>
+        <value name="ARG0">
+          <block type="text" id="6">
+            <field name="TEXT">time1</field>
+          </block>
+        </value>
+        <value name="ARG1">
+          <block type="component_set_get" id="7">
+            <mutation component_type="Label" set_or_get="get" property_name="Text" is_generic="false" instance_name="Label1"></mutation>
+            <field name="COMPONENT_SELECTOR">Label1</field>
+            <field name="PROP">Text</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="8" x="-4" y="75">
+    <mutation component_type="Button" instance_name="STOP" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">STOP</field>
+    <statement name="DO">
+      <block type="component_set_get" id="9" inline="false">
+        <mutation component_type="Clock" set_or_get="set" property_name="TimerEnabled" is_generic="false" instance_name="Clock1"></mutation>
+        <field name="COMPONENT_SELECTOR">Clock1</field>
+        <field name="PROP">TimerEnabled</field>
+        <value name="VALUE">
+          <block type="logic_boolean" id="10">
+            <field name="BOOL">FALSE</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="11" x="-7" y="154">
+    <mutation component_type="Button" instance_name="STOP" event_name="LongClick"></mutation>
+    <field name="COMPONENT_SELECTOR">STOP</field>
+    <statement name="DO">
+      <block type="component_set_get" id="12" inline="false">
+        <mutation component_type="Clock" set_or_get="set" property_name="TimerEnabled" is_generic="false" instance_name="Clock1"></mutation>
+        <field name="COMPONENT_SELECTOR">Clock1</field>
+        <field name="PROP">TimerEnabled</field>
+        <value name="VALUE">
+          <block type="logic_boolean" id="13">
+            <field name="BOOL">FALSE</field>
+          </block>
+        </value>
+        <next>
+          <block type="component_set_get" id="14" inline="false">
+            <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="Label1"></mutation>
+            <field name="COMPONENT_SELECTOR">Label1</field>
+            <field name="PROP">Text</field>
+            <value name="VALUE">
+              <block type="math_number" id="15">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="16" x="373" y="137">
+    <mutation component_type="Button" instance_name="LOAD" event_name="Click"></mutation>
+    <field name="COMPONENT_SELECTOR">LOAD</field>
+    <statement name="DO">
+      <block type="component_set_get" id="17" inline="false">
+        <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="Label1"></mutation>
+        <field name="COMPONENT_SELECTOR">Label1</field>
+        <field name="PROP">Text</field>
+        <value name="VALUE">
+          <block type="component_method" id="18" inline="false">
+            <mutation component_type="TinyDB" method_name="GetValue" is_generic="false" instance_name="TinyDB1"></mutation>
+            <field name="COMPONENT_SELECTOR">TinyDB1</field>
+            <value name="ARG0">
+              <block type="text" id="19">
+                <field name="TEXT">time1</field>
+              </block>
+            </value>
+            <value name="ARG1">
+              <block type="component_set_get" id="20">
+                <mutation component_type="Label" set_or_get="get" property_name="Text" is_generic="false" instance_name="Label1"></mutation>
+                <field name="COMPONENT_SELECTOR">Label1</field>
+                <field name="PROP">Text</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="component_event" id="21" x="-6" y="269">
+    <mutation component_type="Clock" instance_name="Clock1" event_name="Timer"></mutation>
+    <field name="COMPONENT_SELECTOR">Clock1</field>
+    <statement name="DO">
+      <block type="component_set_get" id="22" inline="false">
+        <mutation component_type="Label" set_or_get="set" property_name="Text" is_generic="false" instance_name="Label1"></mutation>
+        <field name="COMPONENT_SELECTOR">Label1</field>
+        <field name="PROP">Text</field>
+        <value name="VALUE">
+          <block type="math_add" id="23" inline="true">
+            <mutation items="2"></mutation>
+            <value name="NUM0">
+              <block type="component_set_get" id="24">
+                <mutation component_type="Label" set_or_get="get" property_name="Text" is_generic="false" instance_name="Label1"></mutation>
+                <field name="COMPONENT_SELECTOR">Label1</field>
+                <field name="PROP">Text</field>
+              </block>
+            </value>
+            <value name="NUM1">
+              <block type="math_number" id="25">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <yacodeblocks ya-version="119" language-version="18"></yacodeblocks>
+</xml>
